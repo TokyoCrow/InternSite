@@ -13,9 +13,9 @@
           <%= count_user_events_in_date(@event, date) %>
         </span>
       <% end -%>
-      <% if count_another_events_in_date(@event, date) > 0 %>
+      <% if count_another_events_in_date(date) > 0 %>
         <span class="badge badge-danger">
-          <%= count_another_events_in_date(current_user.id, date)%>
+          <%= count_another_events_in_date(date)%>
         </span> 
       <% end -%>
     </div>
