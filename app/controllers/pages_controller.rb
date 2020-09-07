@@ -2,7 +2,6 @@ class PagesController < ApplicationController
 
 	def index
 		@date = params[:date] ? Date.parse(params[:date]) : Date.today
-		puts @date
 		@event = Event.all.where(user_id: current_user.id)
 		@events_of_today = all_events_day(Date.today)
 		@events_of_day = all_events_day(@date)
