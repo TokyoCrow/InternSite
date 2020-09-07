@@ -5,6 +5,22 @@ MONTHS = %w[nil Январь Февраль Март Апрель Май Июн�
     MONTHS[date.month]
   end
 
+  def count_user_events_in_date(event,date)
+    event.all.where(date: Date.today.strftime("%Y-%m-%d")).size +
+    event.all.where({repeat_every_day: true}).where.not(date: date).size +
+    event.all.where({repeat_every_week: true, weekday: date.wday}).where.not(date: date).size +
+    event.all.where("date::text LIKE ?", "%-" + date.to_s.split("-")[2]).where({repeat_every_month: true}).where.not(date: date).size +
+    event.all.where("date::text LIKE ?", "%-"+ date.to_s.split("-")[1] + "-" + date.to_s.split("-")[2]).where({repeat_every_year: true}).where.not(date: date).size
+  end
+
+  def count_another_events_in_date(id,date)
+    Event.all.where(date: Date.today.strftime("%Y-%m-%d")).where.not(user_id: id).size +
+    Event.all.where({repeat_every_day: true}).where.not(user_id: id).where.not(date: date).size +
+    Event.all.where({repeat_every_week: true, weekday: date.wday}).where.not(user_id: id).where.not(date: date).size +
+    Event.all.where("date::text LIKE ?", "%-" + date.to_s.split("-")[2]).where({repeat_every_month: true}).where.not(user_id: id).where.not(date: date).size +
+    Event.all.where("date::text LIKE ?", "%-"+ date.to_s.split("-")[1] + "-" + date.to_s.split("-")[2]).where({repeat_every_year: true}).where.not(user_id: id).where.not(date: date).size
+  end
+
   def calendar(date = Date.today, &block)
     Calendar.new(self, date, block).table
   end
