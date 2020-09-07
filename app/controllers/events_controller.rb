@@ -64,6 +64,7 @@ class EventsController < ApplicationController
     arguments[:weekday] = time.wday
     if @event?
       arguments[:id] = @event.id
+    end
     return arguments
   end
 end
