@@ -3,9 +3,9 @@ class PagesController < ApplicationController
 	def index
 		@date = params[:date] ? Date.parse(params[:date]) : Date.today
 		@event = Event.all.where(user_id: current_user.id)
-		@events_of_today = all_events_day(Date.today).first(10)
-		@events_of_day = params[:date] ? @event.all.where(date: params[:date]) : @event.all.where(date: Date.today.strftime("%Y-%m-%d"))
+		@events_of_today = all_events_day(Date.today)
 		@events_of_day = all_events_day(@date)
+		puts @events_of_day
 	end
 
 	private 
