@@ -63,9 +63,6 @@ class EventsController < ApplicationController
     arguments[:repeat_every_month] = repeat[3]
     arguments[:repeat_every_year] = repeat[4]
     arguments[:weekday] = time.wday
-    if @event
-      arguments[:id] = @event.id
-    end
     return arguments
   end
 end
