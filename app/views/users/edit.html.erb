@@ -2,7 +2,7 @@
   <div class="flex-colum col-8">
     <h2 class="d-flex justify-content-center mt-2"> Профиль </h2>
     <div>
-      <%= form_with scope: :user, url: users_path, local: true do |form| %>
+      <%= form_with scope: :user, url: user_path, local: true, method: :put do |form| %>
         
         <% if @user.errors.any? %>      
           <% @user.errors.full_messages.each do |msg| %>
