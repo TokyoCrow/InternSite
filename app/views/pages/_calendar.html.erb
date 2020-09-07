@@ -8,8 +8,16 @@
   <div class="position-relative h-100">
     <%= link_to date.day, root_path(date: date), class:"stretched-link text-reset" %>
     <div>
-      <span class="badge badge-success"><%= count_user_events_in_date(@event, date) %></span>
-      <span class="badge badge-danger"><%= count_another_events_in_date(current_user.id, date)%></span> 
+      <% if count_user_events_in_date(@event, date) > 0 %>
+        <span class="badge badge-success">
+          <%= count_user_events_in_date(@event, date) %>
+        </span>
+      <% end -%>
+      <% if count_another_events_in_date(@event, date) > 0 %>
+        <span class="badge badge-danger">
+          <%= count_another_events_in_date(current_user.id, date)%>
+        </span> 
+      <% end -%>
     </div>
   </div>
   <% end %>
