@@ -38,7 +38,7 @@ class EventsController < ApplicationController
   def update
     @event = Event.find(params[:id])
     if @event.update(event_params)
-      reder 'show'
+      render 'show'
     else
       render 'edit'
     end
