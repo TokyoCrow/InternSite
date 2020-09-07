@@ -1,0 +1,12 @@
+<div id="events">
+  <h2 id="month">
+    <%= link_to "<", date: @date.prev_month %>
+    <%= rus_name_of_month(@date) + " " + @date.strftime("%Y") %>
+    <%= link_to ">", date: @date.next_month %>
+  </h2>
+  <%= calendar @date do |date| %>
+  <div class="position-relative h-100">
+    <%= link_to date.day, root_path(date: date), class:"stretched-link text-reset" %><br>
+  </div>
+  <% end %>
+</div>

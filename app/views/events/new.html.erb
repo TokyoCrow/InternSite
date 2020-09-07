@@ -1,0 +1,53 @@
+<div class="d-flex justify-content-center mt-3 shadow-lg p-3 mb-5 bg-white rounded">
+  <div class="flex-colum col-8">
+    <h2 class="d-flex justify-content-center mt-2"> Новое событие </h2>
+    <%= form_with scope: :event , url: events_path, local: true do |form| %>
+      <% if @event.errors.any? %>      
+        <% @event.errors.full_messages.each do |msg| %>
+          <div class="alert alert-danger"> 
+            <%= msg %>
+          </div>
+        <% end %>
+      <% end %>
+      <div class="form-group">  
+        <%= form.label("Название") %><br>
+        <% if @event.errors[:title].any? %>
+          <%= form.text_field :title , class:"rounded-lg form-control is-invalid"%>
+        <% else %>
+            <%= form.text_field :title , class:"rounded-lg form-control"%>
+        <% end %>
+      </div>
+      <div class="form-group">  
+        <%= form.label("Описание") %><br>
+        <%= form.text_area :discription , class:"rounded-lg form-control"%>
+      </div>
+      <div class="form-group">  
+        <%= form.label("Дата") %><br>
+        <%= form.date_field :date , class:"rounded-lg form-control"%>
+      </div>
+      <div class="form-group">  
+        <%= radio_button_tag(:repeat, 0, checked = true) %>
+        <%= label_tag("Без повтора") %>
+      </div>
+      <div class="form-group">  
+        <%= radio_button_tag(:repeat, 1, checked = false,class:"") %>
+        <%= label_tag("Повторять каждый день") %>
+      </div>
+      <div class="form-group">  
+        <%= radio_button_tag(:repeat, 2, checked = false,class:"") %>
+        <%= label_tag("Повторять каждую неделю") %>
+      </div>
+      <div class="form-group">  
+        <%= radio_button_tag(:repeat, 3, checked = false, class:"") %>
+        <%= label_tag("Повторять каждый месяц") %>
+      </div>
+      <div class="form-group">  
+        <%= radio_button_tag(:repeat, 4, checked = false,class:"") %>
+        <%= label_tag("Повторять каждый год") %>
+      </div>
+      <div class="form-group">  
+        <%= form.submit("Сохранить", class: "btn btn-primary mb-2")%>
+      </div>
+    <% end %>
+  </div>
+</div>

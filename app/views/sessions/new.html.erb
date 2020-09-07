@@ -1,0 +1,26 @@
+<div class="d-flex justify-content-center">
+  <div class="flex-colum col-8">
+    <h2 class="d-flex justify-content-center mt-2 "> Вход </h2>
+    <div>
+      <%= form_for(:session, url: login_path, local: true) do |f| %>
+        <% flash.each do |key, value| %>
+          <div class="alert alert-<%= key %>">
+            <%= value %>
+          </div>
+        <% end %>
+        <div class="form-group">
+          <%= f.label "Электронная почта"%> <br>
+          <%= f.email_field :email , class:"rounded-lg form-control"%>
+        </div>
+        <div class="form-group">
+          <%= f.label "Пароль" %><br>
+          <%= f.password_field :password , class:"rounded-lg form-control" %>
+        </div>
+        <div class="form-group d-flex justify-content-between">
+          <%= f.submit "Войти" , class: "form btn btn-success"%>
+          <%= link_to "Зарегистрироваться", signup_path, class: "form btn btn-primary" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

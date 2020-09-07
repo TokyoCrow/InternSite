@@ -1,0 +1,10 @@
+<h2 class="d-flex justify-content-center">
+	<%= "Сегодня " + Date.today.strftime("%d\.%m") %>
+</h2>
+<ul class="list-group">
+	<% if @events_of_today.any? %>
+		<%= render partial: "event_today", collection: @events_of_today %>
+	<% else %>
+		<p class="d-flex justify-content-center"> На cегодня нет заметок </p>
+	<% end %>
+</ul>

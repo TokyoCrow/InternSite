@@ -1,0 +1,36 @@
+<div class = "d-flex flex-row shadow-lg p-3 mt-3 bg-white rounded">
+  <div class="w-100 text-wrap text-break">
+    <div>
+      <%= label_tag( nil, "Название:", class:"font-italic font-weight-bold") %>
+      <%= @event.title %>
+    </div>
+    <div>
+      <%= label_tag( nil,"Описание:", class:"font-italic font-weight-bold") %>
+      <%= @event.discription %>
+    </div>
+    <div>
+      <%= label_tag( nil,"Дата:", class:"font-italic font-weight-bold") %>
+      <%= @event.date %>
+    </div>
+    <div>
+      <%= label_tag( nil, "Тип повтора:", class:"font-italic font-weight-bold") %>
+      <% if @event.repeat_every_day%>
+        <%= label_tag(:Каждый_день) %>
+      <% elsif @event.repeat_every_week%>
+        <%= label_tag(:Каждую_неделю) %>
+      <% elsif @event.repeat_every_month%>
+        <%= label_tag(:Каждый_месяц) %>
+      <% elsif @event.repeat_every_year%>
+        <%= label_tag(:Каждый_год) %>
+      <% else %>
+        <%= label_tag(:Без_повтора) %>
+      <% end %>
+    </div>
+  <% if @event.user_id == current_user.id %>
+    <div class="form-group d-flex justify-content-between"> 
+      <%= link_to 'Редактировать', edit_event_path(@event), class:"btn btn-warning" %>
+      <%= link_to 'Удалить', event_path(@event), method: :delete, class:"btn btn-outline-danger"%>
+    </div>
+  <% end %> 
+  </div>
+</div>
