@@ -9,7 +9,7 @@ MONTHS = %w[nil Январь Февраль Март Апрель Май Июн�
   	event.where({date: date}).size + 
     event.where({repeat_every_day: true}).where.not(date: date).size + 
     event.where({repeat_every_week: true, weekday: date.wday}).where.not(date: date).size +
-    event.where("date::text LIKE ?", "%-" + date.split("-")[2].to_s)).where({repeat_every_month: true}).where.not(date: date).size +
+    event.where("date::text LIKE ?", "%-" + date.split("-")[2].to_s).where({repeat_every_month: true}).where.not(date: date).size +
     event.where("date::text LIKE ?", "%-"+ date.split("-")[1].to_s + "-" + date.split("-")[2].to_s).where({repeat_every_year: true}).where.not(date: date).size
   end
 
