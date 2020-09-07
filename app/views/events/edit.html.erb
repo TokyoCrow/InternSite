@@ -1,7 +1,7 @@
 <div class="d-flex justify-content-center mt-3 shadow-lg p-3 mb-5 bg-white rounded">
   <div class="flex-colum col-8">
     <h2 class="d-flex justify-content-center mt-2"> Редактировать </h2>
-    <%= form_with scope: :event , url: events_path, local: true do |form| %>
+    <%= form_with scope: @event , url: events_path, local: true do |form| %>
       <% if @event.errors.any? %>      
         <% @event.errors.full_messages.each do |msg| %>
           <div class="alert alert-danger"> 
