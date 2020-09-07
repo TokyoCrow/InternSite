@@ -12,8 +12,8 @@ class PagesController < ApplicationController
 		events = date ? @event.all.where(date: date) : @event.all.where(date: Date.today.strftime("%Y-%m-%d"))
 		events = events + @event.all.where({repeat_every_day: true}).where.not(date: date)
 		events = events + @event.all.where({repeat_every_week: true, weekday: date.wday}).where.not(date: date)
-		events = events + @event.all.where("date::text LIKE ?", "%-" + date.split("-")[2].to_s).where({repeat_every_month: true}).where.not(date: date)
-		events = events + @event.all.where("date::text LIKE ?", "%-"+ date.split("-")[1].to_s + "-" + date.split("-")[2].to_s).where({repeat_every_year: true}).where.not(date: date)
+		events = events + @event.all.where("date::text LIKE ?", "%-" + date.to_s.split("-")[2]).where({repeat_every_month: true}).where.not(date: date)
+		events = events + @event.all.where("date::text LIKE ?", "%-"+ date.to_s.split("-")[1] + "-" + date.to_s.split("-")[2]).where({repeat_every_year: true}).where.not(date: date)
 	end
 
 	def logged_in_user
