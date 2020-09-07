@@ -1,0 +1,61 @@
+// Place all the styles related to the Pages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+#events .calendar {
+  border-collapse: collapse;
+  border-size: fixed;
+  width: 100%;
+  padding: 6px;
+  border: 1px solid #999;
+
+  td, th {
+    padding: 6px;
+    border-right: 1px solid #999;
+    border-left: 1px solid #999;
+  }
+
+  th {
+    background: #DDD;
+    color: #666;
+    text-align: center;
+    width: 14.2857142857143%;
+  }
+
+  td {
+    background: #FFF;
+    color: #777;
+    height: 50px;
+    text-align: center;
+    vertical-align: top;
+    font-size: 16px;
+    padding: 0px;
+  }
+
+  .notmonth, .notmonth a { color: #CCC; }
+  .today { background-color: #D7F2FF; }
+}
+
+#events #month {
+  margin: 0;
+  padding-bottom: 10px;
+  text-align: center;
+  font-size: 22px;
+  a {
+    text-decoration: none;
+    padding: 0 10px;
+    color: #999;
+  }
+}
+
+#events ul {
+  font-size: 11px;
+  padding-left: 20px;
+}
+
+.events-block{
+  width: 40%;
+}
+
+.calendar-block{
+  width: 60%;
+}
