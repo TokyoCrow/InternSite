@@ -3,7 +3,7 @@
 	<% if btns_massive(count_user_events_in_date(@date),(@number_of_events_day/10-2),10).size > 1%>
 		<hr>
 		<ul class="list-group list-group-horizontal-md">
-			<% btns_massive(count_user_events_in_date(@date),(@number_of_events_day/10-2),10).each do |btn| %>
+			<% btns_massive(count_events_in_date(@date),(@number_of_events_day/10-2),10).each do |btn| %>
 				<%= link_to btn+1, root_path(date: @date, quantity_day: btn*10 , quantity_today: @number_of_events_today), class:"list-group-item list-group-item-action" %>
 			<% end -%>
 		</ul>
