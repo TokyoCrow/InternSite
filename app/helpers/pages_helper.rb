@@ -11,12 +11,10 @@ MONTHS = %w[nil Январь Февраль Март Апрель Май Июн�
     else
       pages = count/divider
     end
-    if (0..(pages).to_i).to_a > 1
-      if selected_page < 5
-        (0..(pages).to_i).to_a.drop(0).take(5)
-      else
-        (0..(pages).to_i).to_a.drop(selected_page).take(5)
-      end
+    if selected_page < 5
+      (0..(pages).to_i).to_a.drop(0).take(5)
+    else
+      (0..(pages).to_i).to_a.drop(selected_page).take(5)
     end
   end
 
