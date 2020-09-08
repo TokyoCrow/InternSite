@@ -33,6 +33,14 @@ MONTHS = %w[nil Январь Февраль Март Апрель Май Июн�
     Event.all.where("date::text LIKE ?", "%-" + date.to_s.split("-")[2]).where({repeat_every_month: true}).where.not(user_id: current_user.id).where.not(date: date).size +
     Event.all.where("date::text LIKE ?", "%-"+ date.to_s.split("-")[1] + "-" + date.to_s.split("-")[2]).where({repeat_every_year: true}).where.not(user_id: current_user.id).where.not(date: date).size
   end
+  
+  def count_events_in_date(date)
+    Event.all.where(date: date).size +
+    Event.all.where({repeat_every_day: true}).where.not(date: date).size +
+    Event.all.where({repeat_every_week: true, weekday: date.wday}).where.not(date: date).size +
+    Event.all.where("date::text LIKE ?", "%-" + date.to_s.split("-")[2]).where({repeat_every_month: true}).where.not(date: date).size +
+    Event.all.where("date::text LIKE ?", "%-"+ date.to_s.split("-")[1] + "-" + date.to_s.split("-")[2]).where({repeat_every_year: true}).where.not(date: date).size
+  end
 
   def calendar(date = Date.today, &block)
     Calendar.new(self, date, block).table
