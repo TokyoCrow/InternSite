@@ -5,12 +5,25 @@ MONTHS = %w[nil Январь Февраль Март Апрель Май Июн�
     MONTHS[date.month]
   end
 
-  def count_user_events_in_date(event,date)
-    event.all.where(date: date).where(user_id: current_user.id).size +
-    event.all.where({repeat_every_day: true}).where.not(date: date).where(user_id: current_user.id).size +
-    event.all.where({repeat_every_week: true, weekday: date.wday}).where.not(date: date).where(user_id: current_user.id).size +
-    event.all.where("date::text LIKE ?", "%-" + date.to_s.split("-")[2]).where({repeat_every_month: true}).where.not(date: date).where(user_id: current_user.id).size +
-    event.all.where("date::text LIKE ?", "%-"+ date.to_s.split("-")[1] + "-" + date.to_s.split("-")[2]).where({repeat_every_year: true}).where.not(date: date).where(user_id: current_user.id).size
+  def btns_massive(count,selected_page,divider)
+    if count == (count/divider).to_i*divider
+      pages = count/divider - 1
+    else
+      pages = count/divider
+    end
+    if selected_page < 5
+      (0..(pages).to_i).to_a.drop(0).take(5)
+    else
+      (0..(pages).to_i).to_a.drop(selected_page).take(5)
+    end
+  end
+
+  def count_user_events_in_date(date)
+    Event.all.where(date: date).where(user_id: current_user.id).size +
+    Event.all.where({repeat_every_day: true}).where.not(date: date).where(user_id: current_user.id).size +
+    Event.all.where({repeat_every_week: true, weekday: date.wday}).where.not(date: date).where(user_id: current_user.id).size +
+    Event.all.where("date::text LIKE ?", "%-" + date.to_s.split("-")[2]).where({repeat_every_month: true}).where.not(date: date).where(user_id: current_user.id).size +
+    Event.all.where("date::text LIKE ?", "%-"+ date.to_s.split("-")[1] + "-" + date.to_s.split("-")[2]).where({repeat_every_year: true}).where.not(date: date).where(user_id: current_user.id).size
   end
 
   def count_another_events_in_date(date)

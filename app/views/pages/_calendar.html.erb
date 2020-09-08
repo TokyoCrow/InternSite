@@ -8,9 +8,9 @@
   <div class="position-relative h-100">
     <%= link_to date.day, root_path(date: date), class:"stretched-link text-reset" %>
     <div>
-      <% if count_user_events_in_date(@event, date) > 0 %>
+      <% if count_user_events_in_date(date) > 0 %>
         <span class="badge badge-success">
-          <%= count_user_events_in_date(@event, date) %>
+          <%= count_user_events_in_date(date) %>
         </span>
       <% end -%>
       <% if count_another_events_in_date(date) > 0 %>
