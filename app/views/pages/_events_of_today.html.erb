@@ -8,7 +8,7 @@
 		<p class="d-flex justify-content-center"> На cегодня нет заметок </p>
 	<% end %>
 </ul>
-<% if btns_massive(count_user_events_in_date(Date.today),(@number_of_events_today/6-2),6) > 1%>
+<% if btns_massive(count_user_events_in_date(Date.today),(@number_of_events_today/6-2),6).size > 1%>
 	<hr>
 	<ul class="list-group list-group-horizontal-md">
 		<% btns_massive(count_user_events_in_date(Date.today),(@number_of_events_today/6-2),6).each do |btn| %>
