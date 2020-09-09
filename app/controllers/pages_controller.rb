@@ -1,6 +1,8 @@
 class PagesController < ApplicationController
 
   def index
+    @day_divider = 10
+    @today_divider = 6
     @number_of_events_today = params[:quantity_today] ? params[:quantity_today].to_i : 0
     @number_of_events_day = params[:quantity_day] ? params[:quantity_day].to_i : 0
     @date = params[:date] ? Date.parse(params[:date]) : Date.today

@@ -8,11 +8,11 @@
 		<p class="d-flex justify-content-center"> На cегодня нет заметок </p>
 	<% end %>
 </ul>
-<% if btns_massive(count_events_in_date(Date.today),(@number_of_events_today/6-2),6).size > 1%>
+<% if btns_massive(count_events_in_date(Date.today),(@number_of_events_today/@today_divider-2),@today_divider).size > 1%>
 	<hr>
 	<ul class="list-group list-group-horizontal-md">
-		<% btns_massive(count_events_in_date(Date.today),(@number_of_events_today/6-2),6).each do |btn| %>
-			<%= link_to btn+1, root_path(date: @date, quantity_day: @number_of_events_day, quantity_today: btn*6), class:"list-group-item list-group-item-action" %>
+		<% btns_massive(count_events_in_date(Date.today),(@number_of_events_today/@today_divider-2),@today_divider).each do |btn| %>
+			<%= link_to btn+1, root_path(date: @date, quantity_day: @number_of_events_day, quantity_today: btn*@today_divider), class:"list-group-item list-group-item-action" %>
 		<% end -%>
 	</ul>
 <% end %>

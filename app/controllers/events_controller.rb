@@ -1,11 +1,17 @@
 class EventsController < ApplicationController
 
   def index
+    @number_of_events = params[:quantity] ? params[:quantity].to_i : 0
     @event = Event.all.order(created_at: :desc)
+    @events_size = @event.size
+    @divider = 10
   end
 
   def user_events
+    @number_of_events = params[:quantity] ? params[:quantity].to_i : 0
     @event = Event.all.where(user_id: current_user.id).order(created_at: :desc)
+    @user_events_size = @event.size
+    @divider = 10
   end
 
   def new
