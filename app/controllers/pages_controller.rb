@@ -6,8 +6,8 @@ class PagesController < ApplicationController
     @number_of_events_today = params[:quantity_today] ? params[:quantity_today].to_i : 0
     @number_of_events_day = params[:quantity_day] ? params[:quantity_day].to_i : 0
     @date = params[:date] ? Date.parse(params[:date]) : Date.today
-    @events_of_today = all_events_day(Date.today).drop(@number_of_events_today).take(6)
-    @events_of_day = all_events_day(@date).drop(@number_of_events_day).take(10)
+    @events_of_today = all_events_day(Date.today).drop(@number_of_events_today).take(@today_divider)
+    @events_of_day = all_events_day(@date).drop(@number_of_events_day).take(@day_divider)
   end
 
   private 

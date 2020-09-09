@@ -2,12 +2,14 @@
   <div>
     <%= render partial: "event", collection: @event %>
   </div>
-  <% if btns_massive(@user_events_size,(@number_of_events/@divider-2),@divider).size > 1%>
+</div>
+<% if btns_massive(@user_events_size,(@number_of_events/@divider-2),@divider).size > 1%>
+	<div class="w-50">
 		<hr>
 		<ul class="list-group list-group-horizontal-md">
 			<% btns_massive(@user_events_size,(@number_of_events/@divider-2),@divider).each do |btn| %>
-				<%= link_to btn+1, user_events_path(quantity: btn*@divider), class:"list-group-item list-group-item-action" %>
+				<%= link_to btn+1, my_events_path(quantity: btn*@divider), class:"list-group-item list-group-item-action" %>
 			<% end -%>
 		</ul>
-	<% end -%>
-</div>
+	</div>
+<% end -%>
