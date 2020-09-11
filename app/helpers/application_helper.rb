@@ -1,5 +1,5 @@
 module ApplicationHelper
-  def btns_massive(count,selected_page,divider)
+  def btns_massive(count, selected_page, divider)
     if count == (count/divider).to_i*divider
       pages = count/divider - 1
     else

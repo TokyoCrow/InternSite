@@ -56,7 +56,6 @@ class EventsController < ApplicationController
     redirect_to root_path
   end
 
-
   private
   def event_params
     repeat = Array.new(5, false)

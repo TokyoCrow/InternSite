@@ -1,5 +1,5 @@
 module PagesHelper
-MONTHS = %w[nil Январь Февраль Март Апрель Май Июнь Июль Август Сентябрь Октябрь Ноябрь Декабрь]
+  MONTHS = %w[nil Январь Февраль Март Апрель Май Июнь Июль Август Сентябрь Октябрь Ноябрь Декабрь]
 
   def rus_name_of_month(date)
     MONTHS[date.month]
