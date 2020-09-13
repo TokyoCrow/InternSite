@@ -3,7 +3,7 @@
 </h2>
 <ul class="list-group">
 	<% if @events_of_today.any? %>
-		<%= render partial: "event_today", collection: @events_of_today %>
+		<%= render partial: "events/event_today", collection: @events_of_today %>
 	<% else %>
 		<p class="d-flex justify-content-center"> На cегодня нет заметок </p>
 	<% end %>

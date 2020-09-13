@@ -1,4 +1,4 @@
-<div class="events_of_day">
+<div class="events_list">
 	<%= render partial: "events/event", collection: @events_of_day %>
 	<% if btns_massive(count_events_in_date(@date),(@number_of_events_day/@day_divider-2),@day_divider).size > 1%>
 		<hr>
